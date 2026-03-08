@@ -14,17 +14,14 @@ RUN apt-get update \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install common Kali tools
-# Split into separate RUN to make layer caching more efficient during rebuilds
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
      # Network scanning & enumeration
      nmap netcat-traditional dnsutils whois \
      # Web & HTTP tools
-     curl wget sqlmap nikto \
+     sqlmap nikto \
      # Password & hash tools
-     john hashcat hydra \
-     # Exploitation framework
-     metasploit-framework \
+     john hydra \
      # Misc utilities
      tmux vim nano net-tools iputils-ping \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
